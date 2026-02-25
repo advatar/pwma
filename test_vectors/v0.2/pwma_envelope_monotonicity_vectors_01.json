@@ -1,0 +1,348 @@
+{
+  "baseline_keys": [
+    "amount_minor",
+    "max_total_amount_minor",
+    "merchant_id",
+    "category",
+    "mcc",
+    "shipping_country",
+    "audience",
+    "payment_provider",
+    "max_uses"
+  ],
+  "cases": [
+    {
+      "child": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 50000
+          },
+          "max_uses": {
+            "le": 5
+          },
+          "merchant_id": {
+            "in": [
+              "m1"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      },
+      "expect": true,
+      "name": "tighten_amount_and_merchants",
+      "parent": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "m1",
+              "m2"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      }
+    },
+    {
+      "child": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 50000
+          },
+          "max_uses": {
+            "le": 5
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      },
+      "expect": false,
+      "name": "drop_parent_key",
+      "parent": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "m1",
+              "m2"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      }
+    },
+    {
+      "child": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "category": {
+            "in": [
+              "electronics"
+            ]
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "m1",
+              "m2"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      },
+      "expect": true,
+      "name": "add_new_restriction_key",
+      "parent": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "m1",
+              "m2"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      }
+    },
+    {
+      "child": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "m3"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      },
+      "expect": false,
+      "name": "merchant_not_subset",
+      "parent": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "m1",
+              "m2"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      }
+    },
+    {
+      "child": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 50000
+          },
+          "max_uses": {
+            "le": 5
+          },
+          "merchant_id": {
+            "in": [
+              "m1"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "BAZ"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      },
+      "expect": false,
+      "name": "extension_data_differs",
+      "parent": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "m1",
+              "m2"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      }
+    },
+    {
+      "child": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "eur",
+            "max": 50000
+          },
+          "max_uses": {
+            "le": 5
+          },
+          "merchant_id": {
+            "in": [
+              "m1"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      },
+      "expect": false,
+      "name": "currency_mismatch",
+      "parent": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "m1",
+              "m2"
+            ]
+          }
+        },
+        "extensions": [
+          {
+            "data": {
+              "foo": "bar"
+            },
+            "type": "com.example/ext/v1"
+          }
+        ],
+        "version": "0.2"
+      }
+    }
+  ],
+  "name": "pwma_envelope_monotonicity_vectors_01",
+  "version": "0.2"
+}

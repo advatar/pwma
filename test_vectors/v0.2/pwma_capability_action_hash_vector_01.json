@@ -1,0 +1,53 @@
+{
+  "action_hash": "sha256:qO1JT71PDmfZ-hhDxaWQwCwnJdfUVCQfyc9yWQL46hI",
+  "action_instance": {
+    "amount": {
+      "currency": "usd",
+      "value_minor": 19999
+    },
+    "context": {
+      "checkout_session_id": "cs_test_123",
+      "purpose": "online.shopping"
+    },
+    "items": [
+      {
+        "quantity": 1,
+        "sku": "ABC-123"
+      }
+    ],
+    "merchant": {
+      "id": "did:web:merchant.example",
+      "name": "Example Merchant"
+    },
+    "shipping": {
+      "country": "US",
+      "postalCode": "94107"
+    },
+    "type": "purchase.execute",
+    "version": "0.2"
+  },
+  "canonicalization": "RFC8785 JCS (restricted types)",
+  "capability_claims_example": {
+    "action_hash": "sha256:qO1JT71PDmfZ-hhDxaWQwCwnJdfUVCQfyc9yWQL46hI",
+    "aud": "did:web:merchant.example",
+    "cnf": {
+      "jkt": "_example_jkt_thumbprint_"
+    },
+    "exp": 1761264600,
+    "iat": 1761264000,
+    "iss": "https://pwma.example",
+    "jti": "cap_01_2d7d19e6",
+    "mandate_jti": "mandate_01_9b2e",
+    "sub": "did:web:chatgpt.example/agents/shopper"
+  },
+  "jcs": "{\"amount\":{\"currency\":\"usd\",\"value_minor\":19999},\"context\":{\"checkout_session_id\":\"cs_test_123\",\"purpose\":\"online.shopping\"},\"items\":[{\"quantity\":1,\"sku\":\"ABC-123\"}],\"merchant\":{\"id\":\"did:web:merchant.example\",\"name\":\"Example Merchant\"},\"shipping\":{\"country\":\"US\",\"postalCode\":\"94107\"},\"type\":\"purchase.execute\",\"version\":\"0.2\"}",
+  "name": "pwma_capability_action_hash_vector_01",
+  "rp_checks": [
+    "verify signature and issuer trust for capability token",
+    "verify aud matches RP",
+    "verify exp/iat validity with bounded skew",
+    "verify cnf.jkt matches DPoP proof key",
+    "recompute action_hash over the action_instance and compare",
+    "enforce single-use jti"
+  ]
+}

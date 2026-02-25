@@ -1,0 +1,75 @@
+{
+  "$id": "https://aaif.io/schemas/pwma/capability-token/v0.2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "claims": {
+      "additionalProperties": true,
+      "properties": {
+        "action_hash": {
+          "pattern": "^sha256:[A-Za-z0-9_-]{16,}$",
+          "type": "string"
+        },
+        "aud": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "cnf": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "exp": {
+          "type": "integer"
+        },
+        "iat": {
+          "type": "integer"
+        },
+        "iss": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "jti": {
+          "minLength": 8,
+          "type": "string"
+        },
+        "mandate_jti": {
+          "minLength": 8,
+          "type": "string"
+        },
+        "sub": {
+          "minLength": 3,
+          "type": "string"
+        }
+      },
+      "required": [
+        "iss",
+        "sub",
+        "aud",
+        "jti",
+        "iat",
+        "exp",
+        "mandate_jti",
+        "action_hash"
+      ],
+      "type": "object"
+    },
+    "format": {
+      "enum": [
+        "jwt",
+        "json"
+      ],
+      "type": "string"
+    },
+    "token": {
+      "minLength": 2,
+      "type": "string"
+    }
+  },
+  "required": [
+    "format",
+    "token",
+    "claims"
+  ],
+  "title": "AAIF PWMA Capability Token v0.2",
+  "type": "object"
+}

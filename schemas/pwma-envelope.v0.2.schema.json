@@ -1,0 +1,167 @@
+{
+  "$defs": {
+    "amountMax": {
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "pattern": "^[a-z]{3}$",
+          "type": "string"
+        },
+        "max": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "currency",
+        "max"
+      ],
+      "type": "object"
+    },
+    "amountRange": {
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "pattern": "^[a-z]{3}$",
+          "type": "string"
+        },
+        "max": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "min": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "currency"
+      ],
+      "type": "object"
+    },
+    "extension": {
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "type": {
+          "minLength": 3,
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "data"
+      ],
+      "type": "object"
+    },
+    "intMax": {
+      "additionalProperties": false,
+      "properties": {
+        "le": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "le"
+      ],
+      "type": "object"
+    },
+    "stringSet": {
+      "additionalProperties": false,
+      "properties": {
+        "in": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "in"
+      ],
+      "type": "object"
+    },
+    "stringSetUpper2": {
+      "additionalProperties": false,
+      "properties": {
+        "in": {
+          "items": {
+            "pattern": "^[A-Z]{2}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "in"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://aaif.io/schemas/pwma/envelope/v0.2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "constraints": {
+      "additionalProperties": false,
+      "properties": {
+        "amount_minor": {
+          "$ref": "#/$defs/amountRange"
+        },
+        "audience": {
+          "$ref": "#/$defs/stringSet"
+        },
+        "category": {
+          "$ref": "#/$defs/stringSet"
+        },
+        "max_total_amount_minor": {
+          "$ref": "#/$defs/amountMax"
+        },
+        "max_uses": {
+          "$ref": "#/$defs/intMax"
+        },
+        "mcc": {
+          "$ref": "#/$defs/stringSet"
+        },
+        "merchant_id": {
+          "$ref": "#/$defs/stringSet"
+        },
+        "payment_provider": {
+          "$ref": "#/$defs/stringSet"
+        },
+        "shipping_country": {
+          "$ref": "#/$defs/stringSetUpper2"
+        }
+      },
+      "type": "object"
+    },
+    "extensions": {
+      "items": {
+        "$ref": "#/$defs/extension"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "version": {
+      "enum": [
+        "0.2"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "constraints"
+  ],
+  "title": "AAIF PWMA Envelope v0.2",
+  "type": "object"
+}

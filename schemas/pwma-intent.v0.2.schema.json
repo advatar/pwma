@@ -1,0 +1,139 @@
+{
+  "$id": "https://aaif.io/schemas/pwma/intent/v0.2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "agent": {
+      "additionalProperties": false,
+      "properties": {
+        "cnf": {
+          "additionalProperties": false,
+          "properties": {
+            "jkt": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "id": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "audience": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "constraints": {
+      "additionalProperties": false,
+      "properties": {
+        "envelope": {
+          "$ref": "https://aaif.io/schemas/pwma/envelope/v0.2.json"
+        },
+        "expiresAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "oneTime": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "expiresAt",
+        "oneTime"
+      ],
+      "type": "object"
+    },
+    "display": {
+      "additionalProperties": true,
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "riskNotice": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "summary"
+      ],
+      "type": "object"
+    },
+    "intentId": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "issuedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "operation": {
+      "additionalProperties": false,
+      "properties": {
+        "parameters": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "type": {
+          "minLength": 3,
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "parameters"
+      ],
+      "type": "object"
+    },
+    "profile": {
+      "minLength": 3,
+      "type": "string"
+    },
+    "version": {
+      "enum": [
+        "0.2"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "profile",
+    "intentId",
+    "issuedAt",
+    "audience",
+    "agent",
+    "operation",
+    "constraints",
+    "display"
+  ],
+  "title": "AAIF PWMA Intent v0.2",
+  "type": "object"
+}

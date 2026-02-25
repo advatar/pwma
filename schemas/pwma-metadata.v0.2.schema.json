@@ -1,0 +1,89 @@
+{
+  "$id": "https://aaif.io/schemas/pwma/metadata/v0.2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "features": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "formats_supported": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "intent_versions_supported": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "issuer": {
+      "format": "uri",
+      "type": "string"
+    },
+    "jwks_uri": {
+      "format": "uri",
+      "type": "string"
+    },
+    "mcp": {
+      "additionalProperties": false,
+      "properties": {
+        "tool_namespace": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "tools_supported": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "tool_namespace"
+      ],
+      "type": "object"
+    },
+    "profiles_supported": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "pwma_versions_supported": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "status_list_uri": {
+      "format": "uri",
+      "type": "string"
+    },
+    "vault_profiles_supported": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "issuer",
+    "jwks_uri",
+    "pwma_versions_supported",
+    "intent_versions_supported",
+    "profiles_supported",
+    "vault_profiles_supported",
+    "formats_supported",
+    "mcp"
+  ],
+  "title": "AAIF PWMA Configuration (Discovery) v0.2",
+  "type": "object"
+}

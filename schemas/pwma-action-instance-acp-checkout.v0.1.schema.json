@@ -1,0 +1,138 @@
+{
+  "$id": "https://aaif.io/schemas/pwma/action-instance/acp-checkout/v0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acp": {
+      "additionalProperties": false,
+      "properties": {
+        "checkout_session_id": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "currency": {
+          "pattern": "^[a-z]{3}$",
+          "type": "string"
+        },
+        "delegated_payment_allowance": {
+          "additionalProperties": false,
+          "properties": {
+            "checkout_session_id": {
+              "minLength": 3,
+              "type": "string"
+            },
+            "currency": {
+              "pattern": "^[a-z]{3}$",
+              "type": "string"
+            },
+            "expires_at": {
+              "format": "date-time",
+              "type": "string"
+            },
+            "max_amount_minor": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "merchant_id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "reason",
+            "max_amount_minor",
+            "currency",
+            "checkout_session_id",
+            "merchant_id",
+            "expires_at"
+          ],
+          "type": "object"
+        },
+        "fulfillment": {
+          "additionalProperties": false,
+          "properties": {
+            "address_hash": {
+              "pattern": "^sha256:[A-Za-z0-9_-]{16,}$",
+              "type": "string"
+            },
+            "country": {
+              "pattern": "^[A-Z]{2}$",
+              "type": "string"
+            },
+            "fulfillment_option_id": {
+              "type": "string"
+            },
+            "postal_code": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "line_items": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "quantity": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "item_id",
+              "quantity"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "merchant_id": {
+          "type": "string"
+        },
+        "payment_provider": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "total_amount_minor": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "checkout_session_id",
+        "payment_provider",
+        "currency",
+        "total_amount_minor",
+        "line_items"
+      ],
+      "type": "object"
+    },
+    "type": {
+      "enum": [
+        "acp.checkout.complete"
+      ],
+      "type": "string"
+    },
+    "version": {
+      "enum": [
+        "0.2"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "type",
+    "acp"
+  ],
+  "title": "AAIF PWMA Action Instance — ACP Checkout Complete v0.1",
+  "type": "object"
+}

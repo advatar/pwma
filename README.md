@@ -1,4 +1,4 @@
-# PWMA standard-ready bundle v0.2.0
+# PWMA v0.2.0
 
 This bundle contains a standard-ready draft of **PWMA (Personal Wallet Management Agent Protocol)**.
 
@@ -15,4 +15,3 @@ This bundle contains a standard-ready draft of **PWMA (Personal Wallet Managemen
 - This is a draft intended for review and iteration.
 - The envelope monotonicity algorithm is designed to be **fully testable** with included vectors.
 - The ACP action-instance mapping is provided for interoperability with agentic commerce checkouts.
-

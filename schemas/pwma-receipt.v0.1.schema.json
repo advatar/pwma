@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaif.io/schemas/pwma/receipt/v0.1.json",
+  "title": "AAIF PWMA Receipt Envelope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "receipt",
+    "claims"
+  ],
+  "properties": {
+    "format": {
+      "type": "string",
+      "enum": [
+        "jwt",
+        "json"
+      ]
+    },
+    "receipt": {
+      "type": "string",
+      "minLength": 2
+    },
+    "claims": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "iss",
+        "jti",
+        "iat",
+        "eventType"
+      ],
+      "properties": {
+        "iss": {
+          "type": "string",
+          "minLength": 3
+        },
+        "jti": {
+          "type": "string",
+          "minLength": 8
+        },
+        "iat": {
+          "type": "integer"
+        },
+        "eventType": {
+          "type": "string",
+          "minLength": 3
+        },
+        "related": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "hashes": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}

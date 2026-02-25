@@ -1,0 +1,72 @@
+{
+  "canonicalization": "RFC8785 JCS (restricted types)",
+  "intent_hash": "sha256:1FbEPK1ZGs-6QXXIYaEPvT3YYx029TEHJUZ3rqpZNfE",
+  "jcs": "{\"agent\":{\"cnf\":{\"jkt\":\"_example_jkt_thumbprint_\"},\"id\":\"did:web:chatgpt.example/agents/shopper\",\"name\":\"Shopper Agent\"},\"audience\":{\"id\":\"did:web:pwma.example\",\"name\":\"Example PWMA\"},\"constraints\":{\"envelope\":{\"constraints\":{\"amount_minor\":{\"currency\":\"usd\",\"max\":100000},\"category\":{\"in\":[\"retail\",\"electronics\"]},\"max_total_amount_minor\":{\"currency\":\"usd\",\"max\":300000},\"max_uses\":{\"le\":10},\"merchant_id\":{\"in\":[\"did:web:merchant.example\"]},\"shipping_country\":{\"in\":[\"US\"]}},\"version\":\"0.2\"},\"expiresAt\":\"2026-03-24T00:00:00Z\",\"oneTime\":false},\"display\":{\"language\":\"en\",\"riskNotice\":\"Purchases may be hard to reverse. Review merchant and limits.\",\"summary\":\"Allow the Shopper Agent to buy items up to $1000 per purchase (max $3000 total) until 24 Mar 2026.\",\"title\":\"Allow shopping under $1000\"},\"intentId\":\"1f7f3b9a-b4d0-4c11-8fb1-3d3e7f12d1c3\",\"issuedAt\":\"2026-02-24T00:00:00Z\",\"operation\":{\"parameters\":{\"currency\":\"usd\",\"purpose\":\"online.shopping\"},\"type\":\"mandate.purchase\"},\"profile\":\"aaif.pwma.mandate.generic/v0.2\",\"version\":\"0.2\"}",
+  "name": "pwma_intent_hash_vector_01",
+  "pwma_intent": {
+    "agent": {
+      "cnf": {
+        "jkt": "_example_jkt_thumbprint_"
+      },
+      "id": "did:web:chatgpt.example/agents/shopper",
+      "name": "Shopper Agent"
+    },
+    "audience": {
+      "id": "did:web:pwma.example",
+      "name": "Example PWMA"
+    },
+    "constraints": {
+      "envelope": {
+        "constraints": {
+          "amount_minor": {
+            "currency": "usd",
+            "max": 100000
+          },
+          "category": {
+            "in": [
+              "retail",
+              "electronics"
+            ]
+          },
+          "max_total_amount_minor": {
+            "currency": "usd",
+            "max": 300000
+          },
+          "max_uses": {
+            "le": 10
+          },
+          "merchant_id": {
+            "in": [
+              "did:web:merchant.example"
+            ]
+          },
+          "shipping_country": {
+            "in": [
+              "US"
+            ]
+          }
+        },
+        "version": "0.2"
+      },
+      "expiresAt": "2026-03-24T00:00:00Z",
+      "oneTime": false
+    },
+    "display": {
+      "language": "en",
+      "riskNotice": "Purchases may be hard to reverse. Review merchant and limits.",
+      "summary": "Allow the Shopper Agent to buy items up to $1000 per purchase (max $3000 total) until 24 Mar 2026.",
+      "title": "Allow shopping under $1000"
+    },
+    "intentId": "1f7f3b9a-b4d0-4c11-8fb1-3d3e7f12d1c3",
+    "issuedAt": "2026-02-24T00:00:00Z",
+    "operation": {
+      "parameters": {
+        "currency": "usd",
+        "purpose": "online.shopping"
+      },
+      "type": "mandate.purchase"
+    },
+    "profile": "aaif.pwma.mandate.generic/v0.2",
+    "version": "0.2"
+  }
+}

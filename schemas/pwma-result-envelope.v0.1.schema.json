@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaif.io/schemas/pwma/result-envelope/v0.1.json",
+  "title": "AAIF PWMA Result Envelope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "resultType"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "pending",
+        "denied"
+      ]
+    },
+    "resultType": {
+      "type": "string",
+      "minLength": 3
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 3
+          },
+          "format": {
+            "type": "string"
+          },
+          "credential": {
+            "type": "string"
+          },
+          "claims": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "ref": {
+            "type": "string"
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "format",
+              "credential"
+            ]
+          },
+          {
+            "required": [
+              "ref"
+            ]
+          }
+        ]
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 3
+          },
+          "format": {
+            "type": "string"
+          },
+          "credential": {
+            "type": "string"
+          },
+          "claims": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "ref": {
+            "type": "string"
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "format",
+              "credential"
+            ]
+          },
+          {
+            "required": [
+              "ref"
+            ]
+          }
+        ]
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "debug": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
