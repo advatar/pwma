@@ -15,3 +15,9 @@ This bundle contains a standard-ready draft of **PWMA (Personal Wallet Managemen
 - This is a draft intended for review and iteration.
 - The envelope monotonicity algorithm is designed to be **fully testable** with included vectors.
 - The ACP action-instance mapping is provided for interoperability with agentic commerce checkouts.
+
+## Example
+
+<object data="./mcp_wallet_architecture_diagram_v5.pdf" type="application/pdf" width="100%" height="600px">
+  <p>This browser cannot display PDFs inline. Download the file here: <a href="./mcp_wallet_architecture_diagram_v5.pdf">mcp_wallet_architecture_diagram_v5.pdf</a>.</p>
+</object>
